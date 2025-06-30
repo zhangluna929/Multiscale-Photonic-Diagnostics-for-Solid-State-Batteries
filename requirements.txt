@@ -1,0 +1,7 @@
+# Core numerical & plotting libraries
+numpy>=1.19.0
+matplotlib>=3.0.0
+
+# Jupyter & interactive widgets
+jupyter>=1.0.0
+ipywidgets>=7.0.0
