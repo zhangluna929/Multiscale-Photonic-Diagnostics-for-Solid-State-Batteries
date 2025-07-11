@@ -1,5 +1,5 @@
-# Optical SPR & Beam-Shaping Toolkit  
-# 光学 SPR & 光束整形工具包
+# Optical SPR & Beam-Shaping
+# 光学 SPR & 光束整形
 
 > No magic, just photons & Python.  
 > 代码不整花活，踏踏实实追光。
