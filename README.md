@@ -2,7 +2,7 @@
 # 光学 SPR & 光束整形
 
 > No magic, just photons & Python.  
-> 代码不整花活，踏踏实实追光。
+
 
 What it does (nothing more, nothing less):  
 它到底干啥：
