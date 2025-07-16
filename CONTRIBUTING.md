@@ -55,6 +55,5 @@ pip install -r requirements.txt -r requirements-dev.txt
 
 ## 9. 问题 & 联系方式
 * GitHub Discussions / Issues 皆可。  
-* 如需私信：`grandpa_coder@example.com`
 
 Happy tracing! 光随心动 🥂 
