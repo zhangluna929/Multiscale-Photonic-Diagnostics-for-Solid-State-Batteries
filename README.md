@@ -53,7 +53,7 @@ What it does (nothing more, nothing less):
 pip install -r requirements.txt  # 准备咖啡
 streamlit run streamlit_app.py   # 拿出爆米花
 ```
-滑动镜子数量 / 金膜厚度，右侧立即刷新：⬇️  
+滑动镜子数量 / 金膜厚度，右侧立即刷新：
 <img src="docs/img/demo.gif" width="600" />
 
 ## Tech highlights / 技术亮点
