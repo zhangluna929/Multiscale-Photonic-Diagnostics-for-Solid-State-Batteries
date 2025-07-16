@@ -92,9 +92,9 @@ If you use this code, cite:
 
 ```
 @software{spr_toolkit_2025,
-  author = {Grandpa-Coder},
+  author = {lunazhang},
   title  = {Open SPR & Beam-Shaping Toolkit},
   year   = {2025},
-  url    = {https://github.com/your/repo}
+  url    = {https://github.com/zhangluna929}
 }
 ``` 
