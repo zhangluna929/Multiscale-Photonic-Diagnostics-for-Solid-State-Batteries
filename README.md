@@ -193,7 +193,7 @@ def calculate_reflectance_tm(self, wavelength_nm, theta_deg):
 - **3D Packaging Modeling**: 10mm diameter cylindrical shell with <3% transmission loss
 - **Curved Surface Ray Tracing**: `curved.py` enables precise modeling of complex geometric structures
 
-### 🤖 Optuna自适应优化算法
+###  Optuna自适应优化算法
 ### Optuna Adaptive Optimization Algorithm
 - **多目标并行优化**: 20试验样本实现均匀度提升40%，SPR共振深度提升50%
 - **智能参数搜索**: 镜组配置与金膜厚度联合寻优
@@ -395,26 +395,4 @@ dendrite_monitor.establish_baseline(50)        # 建立基线
 dendrite_monitor.start_realtime_monitoring()   # 开始监控
 ```
 
----
-
-## 致谢与引用 | Acknowledgments and Citation
-
-本项目基于多年的纳米光子学和电化学储能研究积累，感谢相关领域前沿研究的启发与支撑。
-
-This project is based on years of accumulated research in nanophotonics and electrochemical energy storage, with gratitude for the inspiration and support from frontier research in related fields.
-
-```bibtex
-@software{spr_battery_platform_2024,
-  title={SPR光源整形一体化平台及固态锂电池模块扩展},
-  author={多尺度光子诊断团队 | Multiscale Photonic Diagnostics Team},
-  year={2024},
-  url={https://github.com/spr-battery-platform},
-  note={SPR Beam-Shaping Integrated Platform with Solid-State Battery Extensions}
-}
-```
-
----
-
-**项目状态**:  生产就绪 | **Project Status**:  Production Ready  
-**技术支持**: 持续更新维护 | **Technical Support**: Continuous Updates and Maintenance  
-**许可证**: MIT License | **License**: MIT License 
+🤖祝看到这的您实验顺利！天天开心！哈哈哈~
