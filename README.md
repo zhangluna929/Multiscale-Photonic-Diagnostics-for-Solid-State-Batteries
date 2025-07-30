@@ -395,4 +395,4 @@ dendrite_monitor.establish_baseline(50)        # 建立基线
 dendrite_monitor.start_realtime_monitoring()   # 开始监控
 ```
 
-🤖祝看到这的您实验顺利！天天开心！哈哈哈~
+🤖祝您天天开心！哈哈哈~
