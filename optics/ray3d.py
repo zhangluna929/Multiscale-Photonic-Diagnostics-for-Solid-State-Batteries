@@ -1,6 +1,4 @@
-"""ray3d.py
-Simple 3-D ray object for curved-shell tracing.
-"""
+"""ray3d"""
 from __future__ import annotations
 from dataclasses import dataclass
 import numpy as np

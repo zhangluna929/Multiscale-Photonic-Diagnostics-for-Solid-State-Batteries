@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-"""elements.py
-Optical elements – abstract base & concrete bits.
-"""
+"""elements"""
 from abc import ABC, abstractmethod
 from typing import List, Optional, Callable, Union
 import numpy as np
@@ -12,15 +10,15 @@ from .materials import gold_n_complex_scalar
 
 
 class OpticalElement(ABC):
-    """Abstract base for any optical element."""
+    """Abstract base for any optical element"""
 
     @abstractmethod
     def interact(self, ray: Ray) -> List[Ray]:
-        """Interact with incoming ray, return list (split allowed)."""
+        """Interact with incoming ray, return list (split allowed)"""
         pass
 
     def intersect_distance(self, ray: Ray) -> float | None:
-        """Distance t (>0) from ray.pos to element plane; None if miss."""
+        """Distance t (>0) from ray"""
         return None
 
     def __repr__(self):
@@ -28,7 +26,7 @@ class OpticalElement(ABC):
 
 
 class Mirror(OpticalElement):
-    """Ideal flat mirror."""
+    """Ideal flat mirror"""
 
     def __init__(self, position: np.ndarray, normal: np.ndarray):
         self.position = np.asarray(position, dtype=float)
@@ -55,10 +53,10 @@ class Mirror(OpticalElement):
 
 
 class Prism(OpticalElement):
-    """Single-plane refraction, rough prism face model."""
+    """Single-plane refraction, rough prism face model"""
 
     def __init__(self, normal: np.ndarray, n_out: float, n_in: float = 1.0):
-        """normal points into prism; n_out inside, n_in outside (air=1)."""
+        """normal points into prism; n_out inside, n_in outside (air=1)"""
         self.normal = self._normalize(normal)
         self.n_out = n_out
         self.n_in = n_in
@@ -93,7 +91,7 @@ class Prism(OpticalElement):
 
 
 class MetalFilm(OpticalElement):
-    """Metal film for SPR (Kretschmann 3-layer setup)."""
+    """Metal film for SPR (Kretschmann 3-layer setup)"""
 
     def __init__(
         self,
@@ -125,7 +123,7 @@ class MetalFilm(OpticalElement):
         return float(np.abs(self._tm_r_coeff(wavelength_nm, theta1)) ** 2)
 
     def _tm_r_coeff(self, wavelength_nm: float, theta1: float) -> complex:
-        """Return complex reflection coefficient r (TM)."""
+        """Return complex reflection coefficient r (TM)"""
         n1 = self.n_prism
         n2 = self._n_m(wavelength_nm)
         n3 = self.n_sample
@@ -148,7 +146,7 @@ class MetalFilm(OpticalElement):
 
     # -- phase shift --
     def get_phase_shift(self, wavelength_nm: float, theta_rad: float) -> float:
-        """Return phase angle (rad) of reflection coefficient."""
+        """Return phase angle (rad) of reflection coefficient"""
         r = self._tm_r_coeff(wavelength_nm, theta_rad)
         return float(np.angle(r))
 
@@ -163,7 +161,7 @@ class MetalFilm(OpticalElement):
         return self._tm_reflectance(ray.wavelength, theta1)
 
     def field_enhancement(self, ray: Ray) -> float:
-        """Return field enhancement |E|² (simplified ≈ 1/R)."""
+        """Return field enhancement |E|² (simplified ≈ 1/R)"""
         R = self.get_reflectance(ray)
         if R == 0:
             return float('inf')

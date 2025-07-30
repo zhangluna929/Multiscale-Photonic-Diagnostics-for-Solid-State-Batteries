@@ -1,6 +1,4 @@
-"""spectrum.py
-Spectrum utilities and thickness optimizer.
-"""
+"""spectrum"""
 from __future__ import annotations
 
 from typing import Sequence, Callable, Optional
@@ -11,7 +9,7 @@ from .elements import MetalFilm
 
 
 def reflectance_spectrum(film: MetalFilm, wavelengths: Sequence[float], theta_rad: float) -> np.ndarray:
-    """Calculate reflectance at fixed angle for multiple wavelengths."""
+    """Calculate reflectance at fixed angle for multiple wavelengths"""
     return np.array([film._tm_reflectance(wl, theta_rad) for wl in wavelengths])
 
 
@@ -21,7 +19,7 @@ def optimize_thickness(
     n_trials: int = 50,
     n_metal_func: Optional[Callable[[float], complex] | complex] = None,
 ) -> float:
-    """Optimize gold film thickness using Optuna to minimize reflectance."""
+    """Optimize gold film thickness using Optuna to minimize reflectance"""
     theta_rad = np.deg2rad(theta_deg)
 
     def objective(trial: optuna.Trial):

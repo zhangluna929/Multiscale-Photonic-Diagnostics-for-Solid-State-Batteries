@@ -1,6 +1,4 @@
-"""optimizer.py
-Weighted multi-objective tweak – spot uniformity + SPR depth.
-"""
+"""optimizer"""
 from __future__ import annotations
 
 import json
@@ -18,7 +16,7 @@ from .materials import gold_n_complex_scalar
 
 
 def spot_uniformity_metric(x_hits: np.ndarray) -> float:
-    """Return std/width metric (smaller is better)."""
+    """Return std/width metric (smaller is better)"""
     if x_hits.size < 2:
         return 1.0
     return float(np.std(x_hits) / (np.ptp(x_hits) + 1e-9))
@@ -40,7 +38,7 @@ def optimize_system(
     n_trials: int = 100,
     output_path: str | Path = "results_optuna.json",
 ):
-    """Joint optimization of mirror count, spread, Au thickness."""
+    """Joint optimization of mirror count, spread, Au thickness"""
 
     def objective(trial: optuna.Trial):
         num_mirrors = trial.suggest_int("num_mirrors", 1, 6)

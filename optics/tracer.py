@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-"""tracer.py
-Ray tracing engine – keep it dumb but sturdy.
-"""
+"""tracer"""
 from typing import List, Sequence
 import numpy as np
 
@@ -11,13 +9,13 @@ from .elements import OpticalElement
 
 
 class RayTracer:
-    """Multi-element ray tracer."""
+    """Multi-element ray tracer"""
 
     def __init__(self, elements: Sequence[OpticalElement]):
         self.elements = elements
 
     def trace(self, rays: List[Ray], max_interactions: int = 10):
-        """Trace list of rays, return list of point arrays per ray."""
+        """Trace list of rays, return list of point arrays per ray"""
         all_paths: List[List[np.ndarray]] = []
         for ray in rays:
             path = [ray.position.copy()]

@@ -1,6 +1,4 @@
-"""stack.py
-Transfer-matrix tools for multi-layer optics and temperature drift.
-"""
+"""stack"""
 from __future__ import annotations
 
 from typing import Sequence, Callable, Dict, Any
@@ -8,7 +6,6 @@ from typing import Sequence, Callable, Dict, Any
 import numpy as np
 
 # ---- Layer dictionary ----
-# Each layer: {'n': n_or_func, 'd': thickness_nm, 'dn_dT': optional (/K)}.
 # First and last may use d=None to mean semi-infinite.
 Layer = Dict[str, Any]
 
@@ -25,7 +22,7 @@ def _layer_params(layer: Layer, wavelength_nm: float) -> _Any:
 
 
 def _q_p(n: complex, cos_theta: complex, pol: str) -> complex:
-    """Layer impedance q_j: TE n·cosθ, TM n/ cosθ."""
+    """Layer impedance q_j: TE n·cosθ, TM n/ cosθ"""
     if pol.upper() == "TE":
         return n * cos_theta
     else:  # TM
@@ -33,7 +30,7 @@ def _q_p(n: complex, cos_theta: complex, pol: str) -> complex:
 
 
 def _char_matrix(n: complex, d_nm: float, cos_theta: complex, wavelength_nm: float, pol: str):
-    """Single-layer characteristic matrix (2×2)."""
+    """Single-layer characteristic matrix (2×2)"""
     delta = 2 * np.pi * n * cos_theta * d_nm * 1e-9 / (wavelength_nm * 1e-9)
     q = _q_p(n, cos_theta, pol)
     cos_d = np.cos(delta)
@@ -89,7 +86,7 @@ def _reflectance(layers: Sequence[Layer], wavelength_nm: float, theta_in: float,
 # ---- Public API ----
 
 def multi_layer_stack(layers: Sequence[Layer], pol: str = "TM") -> Callable[[float, float], float]:
-    """Return callable reflect(wl_nm, theta_rad) -> R."""
+    """Return callable reflect(wl_nm, theta_rad) -> R"""
 
     def _func(wavelength_nm: float, theta_rad: float) -> float:
         return _reflectance(layers, wavelength_nm, theta_rad, pol)
@@ -100,10 +97,7 @@ def multi_layer_stack(layers: Sequence[Layer], pol: str = "TM") -> Callable[[flo
 # ---- Temperature drift ----
 
 def temp_drift(layers: Sequence[Layer], delta_T: float, pol: str = "TM") -> Callable[[float, float], float]:
-    """Return reflectance function after ΔT drift.
-
-    If a layer has 'dn_dT', refractive index is shifted by dn_dT*ΔT.
-    """
+    """Return reflectance function after ΔT drift"""
 
     new_layers: list[Layer] = []
     for layer in layers:
@@ -129,10 +123,7 @@ def temp_drift(layers: Sequence[Layer], delta_T: float, pol: str = "TM") -> Call
 __all__.append("thermo_mech_drift")
 
 def thermo_mech_drift(layers: Sequence[Layer], delta_T: float, delta_sigma: float, pol: str = "TM"):
-    """Return reflectance after simultaneous temp (ΔT, K) and stress (Δσ, MPa) drift.
-
-    A layer may include 'dn_dT' and/or 'dn_dSigma' (per MPa).
-    """
+    """Return reflectance after simultaneous temp (ΔT, K) and stress (Δσ, MPa) drift"""
     new_layers = []
     for layer in layers:
         dn_T = layer.get("dn_dT", 0.0)

@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-"""visualize.py
-Quick plots for rays and spot histograms.
-"""
+"""visualize"""
 from typing import List
 
 import numpy as np
@@ -10,7 +8,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_rays(paths: List[List[np.ndarray]]):
-    """Plot ray paths."""
+    """Plot ray paths"""
     plt.figure(figsize=(6, 4))
     for path in paths:
         pts = np.array(path)
@@ -23,7 +21,7 @@ def plot_rays(paths: List[List[np.ndarray]]):
 
 
 def plot_spot_histogram(hits: np.ndarray, bins: int = 60):
-    """Plot histogram of hit X positions."""
+    """Plot histogram of hit X positions"""
     if hits.size == 0:
         print("No hit points to display.")
         return

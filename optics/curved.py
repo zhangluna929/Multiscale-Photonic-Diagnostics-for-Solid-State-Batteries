@@ -1,6 +1,4 @@
-"""curved.py
-Curved surfaces for pouch/cylindrical packaging.
-"""
+"""curved"""
 from __future__ import annotations
 from typing import List, Callable
 import numpy as np
@@ -12,7 +10,7 @@ __all__ = ["CylindricalShell", "Tracer3D"]
 
 
 class CylindricalShell(OpticalElement):
-    """Simple y-axis cylinder shell, reflective interior."""
+    """Simple y-axis cylinder shell, reflective interior"""
 
     def __init__(self, radius: float, center: np.ndarray | None = None):
         self.R = radius
@@ -49,7 +47,7 @@ class CylindricalShell(OpticalElement):
 
 
 class Tracer3D:
-    """Minimal 3-D ray tracer (curved shells + mirrors planes TBD)."""
+    """Minimal 3-D ray tracer (curved shells + mirrors planes TBD)"""
 
     def __init__(self, elements: List[OpticalElement]):
         self.elements = elements
